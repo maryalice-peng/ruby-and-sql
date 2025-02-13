@@ -16,9 +16,52 @@ Company.destroy_all
 
 # 2. insert new rows in companies table
 
+# companies =   company.all.count
+puts "There are #{Company.all.count} companies"
+
+new_company = Company.new
+new_company["name"] = "Apple"
+new_company["city"] = "Cupertino"
+new_company["state"] = "CA"
+new_company["url"] = "https://apple.com"
+new_company.save
+# puts new_company.inspect
+
+puts "There are #{Company.all.count} companies"
+
+new_company = Company.new
+new_company["name"] = "Amazon"
+new_company["city"] = "Seattle"
+new_company["state"] = "WA"
+new_company.save
+# puts new_company.inspect
+
+puts "There are #{Company.all.count} companies"
+
+new_company = Company.new
+new_company["name"] = "Google"
+new_company["city"] = "Mountainview"
+new_company["state"] = "CA"
+new_company["url"] = "https://google.com"
+new_company.save
+# puts new_company.inspect
+
+puts "There are #{Company.all.count} companies"
+
+
 # 3. query companies table to find all row with California company
 
+cali_companies = Company.where({"state" => "CA"})
+# puts cali_companies.inspect
+
+puts "California companies: #{cali_companies.count}"
+
 # 4. query companies table to find single row for Apple
+
+# apple = Company.where({"name" => "Apple"})
+apple = Company.find_by({"name" => "Apple"})
+puts apple.inspect
+#if there are more than one rows named APple, then it'll only return the info for the first one, like an index 
 
 # 5. read a row's column value
 
