@@ -64,7 +64,21 @@ puts apple.inspect
 #if there are more than one rows named APple, then it'll only return the info for the first one, like an index 
 
 # 5. read a row's column value
+puts apple["url"]
 
 # 6. update a row's column value
+amazon = Company.find_by({"name" => "Amazon"})
+# puts amazon.inspect
+amazon["url"] = "https://amazon.com"
+# puts amazon.inspect
+# The above doesn't work for updating a row because it doesn't actually save it into the DB. Just temporarily returns the right answer in your terminal, but isn't a long-term fix 
+amazon.save
+# the .save is what will fix it 
+puts amazon.inspect
+
 
 # 7. delete a row
+google = Company.find_by({"name" => "Google"})
+google.destroy
+
+puts "There are #{Company.all.count} companies"
